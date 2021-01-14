@@ -1,5 +1,5 @@
 (define (domain locality)
-  (:requirements :typing :action-costs)
+  (:requirements :typing :action-costs :fluents)
   (:types
         node data-block count - object
   )
@@ -22,7 +22,7 @@
 (:action request
    :parameters (?n1 ?n2 - node ?d - data-block ?c1 ?c2 - count)
    :precondition (and (in ?d ?n2) (connection ?n1 ?n2) (sent ?n1 ?n2 ?c1) (next ?c1 ?c2))
-   :effect (and (in ?d ?n1) (sent ?n1 ?n2 ?c2) (= (last-request-point) (request-point ?n1 ?n2)) (increase (total-cost) (/ (kilobytes-sent ?c2) (* (segment-bandwidth ?n1 ?n2) (block-relative-bandwidth ?c2))))))
+   :effect (and (in ?d ?n1) (sent ?n1 ?n2 ?c2) (assign (last-request-point) (request-point ?n1 ?n2)) (increase (total-cost) (/ (kilobytes-sent ?c2) (* (segment-bandwidth ?n1 ?n2) (block-relative-bandwidth ?c2))))))
 
 (:action batch-request
    :parameters (?n1 ?n2 - node ?d - data-block ?c1 ?c2 - count)
