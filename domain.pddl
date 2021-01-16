@@ -7,16 +7,16 @@
 
   (:predicates
   	(has-requested ?n - node)
-  	(has-requested-to ?n1 ?n2 - node)
+  	(has-requested-to ?n1 - node ?n2 - node)
        	(in ?d - data-block ?n - node)
-  	(connection ?n1 ?n2 - node)
-  	(next ?c1 ?c2 - count)
-  	(sent ?n1 ?n2 - node ?c - count)
+  	(connection ?n1 - node ?n2 - node)
+  	(next ?c1 - count ?c2 - count)
+  	(sent ?n1 - node ?n2 - node ?c - count)
   )
   
   (:functions (total-cost) - number
   	    (kilobytes-sent ?nz - non-zero) - number
-  	    (segment-bandwidth ?n1 ?n2 - node) - number
+  	    (segment-bandwidth ?n1 - node ?n2 - node) - number
   	    (block-relative-bandwidth ?non-zero - count) - number
   )
   
