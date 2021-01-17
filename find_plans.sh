@@ -21,9 +21,9 @@ for problem in 01 02 03 04 05 06 07 08 09 10
 			echo "IN EXECUTION: ../seq-sat-cbp/cbp-roller -o domain.pddl -f p$problem.pddl -O -h 1 -g 1 -H $heuristic -S $search_alg -n"
 
 			echo -e "../seq-sat-cbp/cbp-roller -o domain.pddl -f p$problem.pddl -O -h 1 -g 1 -H $heuristic -S $search_alg -n\n\n" > $file
-			../seq-sat-cbp/cbp-roller -o domain.pddl -f p$problem.pddl -O -h 1 -g 1 -H $heuristic -S $search_alg -n > $file &
+			../seq-sat-cbp/cbp-roller -o domain.pddl -f p$problem.pddl -O -h 1 -g 1 -H $heuristic -S $search_alg -n >> $file &
 
-			sleep 300
+			sleep 600
 
 			pid=$(ps -e | grep cbp-roller | awk '{print $1}')
 
